@@ -5,9 +5,9 @@
   "homepage": "https://github.com/acbart/educational-phaser-game-template#readme",
   "main": "index.js",
   "game": {
-    "url": "loan-shark-mvp",
-    "shortName": "LoanShark",
-    "name": "Loan Shark"
+    "url": "github-hosting-directions",
+    "shortName": "EdGame",
+    "name": "Educational Phaser Game"
   },
   "author": {
     "name": "Austin Cory Bart",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhdavis8/loan-shark-mvp.git"
+    "url": "https://github.com/Spring-2021-CISC374/github-hosting-directions.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
