@@ -39,4 +39,6 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
   - `npm run deploy-beta`
   - `npm run deploy-final`
 - If all goes well, your game should be accessible at the link shown at the top of the page in green under your GitHub repo's Settings page, in the Pages tab.
+  - Be sure to select the right verion, between dev, alpha, beta, and final.
+  - The alpha and beta versions should be used to store the versions of your game submitted for the alpha (MVP) and beta submissions.
 - For local testing you can use `npm rum start`.
