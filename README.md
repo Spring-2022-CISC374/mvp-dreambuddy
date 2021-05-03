@@ -32,7 +32,8 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
   - From the main branch:
   - `git checkout -b gh-pages`
   - `git push --set-upstream origin gh-pages`
-- Run `npm install` to add any new dependencies
+  - `get checkout master`
+- Run `npm install` to add any new dependencies (make sure you have checked out back to your original main/master branch
 - To deploy your game, just run one of the following commands to deploy to the right page:
   - `npm run deploy-dev`
   - `npm run deploy-alpha`
