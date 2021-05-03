@@ -26,7 +26,7 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
   - In `{ from: 'assets', to: 'assets' },` the first `assets` should point to whatever your assets folder is.
   - `{ from: 'assets/icons/favicon.ico', to: '' }` should point to wherever your favicon is, if you have one.
   - `{ from: '*.js', to: ''}` should point to wherever all your JavaScript/TypeScript files are.
-- Open up `config/webpack.dev.js` and change the following:
+- Open up `config/webpack.deploy.js` and change the following:
   - `fs.copyFileSync(path.resolve(__dirname, 'index.html'),` (line 37 or so) should point to wherever your `index.html` is.
 - Make a new branch of your repository called `gh-pages`:
   - From the main branch:
