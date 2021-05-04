@@ -8,7 +8,7 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
 
 ## Directions
 
-- Get all the files in this repo and put them in your game's repository, at the root level (i.e., don't put them in a subfolder). If you already have some of these files, for now I recommend renaming those old versions to something else, so you still have them, but using these versions nonetheless.
+- Get all the files in this repo and put them in your game's repository, at the root level (i.e., don't put them in a subfolder). If you already have some of these files, for now I recommend renaming those old versions to something else, so you still have them, and using these new versions.
 - Open up the new package.json and update these important settings:
   - `name`: This must be a lower-case version of your repository name on GitHub, without spaces.
   - `description`: Give a quick, one sentence summary of your game.
@@ -39,8 +39,8 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
   - `npm run deploy-alpha`
   - `npm run deploy-beta`
   - `npm run deploy-final`
-- If all goes well, your game should be accessible at the link shown at the top of the page in green under your GitHub repo's Settings page, in the Pages tab
-  - The link should be something like `http://spring-2021-cisc374.github.io/my-repo-name/`
+- If all goes well, your game should be accessible at `http://spring-2021-cisc374.github.io/my-repo-name/`
   - Be sure to select the right verion, between dev, alpha, beta, and final.
   - The alpha and beta versions should be used to store the versions of your game submitted for the alpha (MVP) and beta submissions.
+  - If you can't see the website, make sure the repo owner has set the repository to public visibility, under the Settings tab.
 - For local testing you can use `npm rum start`.
