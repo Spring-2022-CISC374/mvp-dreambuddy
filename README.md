@@ -42,5 +42,5 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
 - If all goes well, your game should be accessible at `http://spring-2021-cisc374.github.io/my-repo-name/`
   - Be sure to select the right verion, between dev, alpha, beta, and final.
   - The alpha and beta versions should be used to store the versions of your game submitted for the alpha (MVP) and beta submissions.
-  - If you can't see the website, make sure the repo owner has set the repository to public visibility, under the Settings tab.
+  - If you can't see the website, make sure the repo owner has set the repository to public visibility, under the Settings tab, Options section, and set GitHub pages to build from the `gh-pages` branch under the Pages section.
 - For local testing you can use `npm rum start`.
