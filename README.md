@@ -26,7 +26,7 @@ IMPORTANT: If you can't get your game to work with this new configuration, don't
   - In `{ from: 'assets', to: 'assets' },` the first `assets` should point to whatever your assets folder is.
   - `{ from: 'assets/icons/favicon.ico', to: '' }` should point to wherever your favicon is, if you have one.
   - `{ from: '*.js', to: ''}` should point to wherever all your JavaScript/TypeScript files are.
-  - In `new HtmlWebpackPlugin({ gameName: package.game.name, template: 'src/index.html', inject: false }),` IF you are NOT using the script tag in HTML to load your game code, then remove the `inject: false`.
+  - In `new HtmlWebpackPlugin({ gameName: package.game.name, template: 'src/index.html', inject: false }),` Make sure this points to your game's `index.html`, relative again to the repo root. Also, IF you are NOT using the script tag in HTML to load your game code, then remove the `inject: false`.
 - Open up `config/webpack.deploy.js` and change the following:
   - `fs.copyFileSync(path.resolve(__dirname, 'index.html'),` (line 37 or so) should point to wherever your `index.html` is.
 - Make a new branch of your repository called `gh-pages`:
