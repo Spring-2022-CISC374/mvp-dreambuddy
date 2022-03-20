@@ -1,7 +1,9 @@
 var config = {
-    width: 750,
-    height: 750,
-    backgroundColor: 0x000000
+    width: 800,
+    height: 800,
+    backgroundColor: 0x000000,
+    color: 0xFFFFFF,
+    scene: [loadGame, mainMenu, menuScene, game1Scene]
 }
 
 
