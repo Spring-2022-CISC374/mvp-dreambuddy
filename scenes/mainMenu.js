@@ -14,7 +14,7 @@ class mainMenu extends Phaser.Scene{
         menuButton.setInteractive();
 
         playButton.on("pointerup", () =>{
-            this.scene.start("game1");
+            this.scene.start("bootGame");
         });
 
         menuButton.on("pointerup", () =>{
