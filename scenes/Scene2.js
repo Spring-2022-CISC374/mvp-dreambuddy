@@ -38,10 +38,18 @@ class Scene2 extends Phaser.Scene {
     this.physics.add.collider(this.enemies, this.players, function(enemy, player) {
       enemy.destroy();
     });
+
+    this.score = 0;
+    this.scoreLabel = this.add.bitmapText(10, 5, "pixelFont", "SCORE ", 75);
   }
 
   update() {
     this.moveShip(this.ship, 2);
+  }
+
+  collectGoodItem() {
+    this.score += 10;
+    this.scoreLabel.text = "SCORE " + this.score;
   }
 
   moveShip(ship, speed) {
