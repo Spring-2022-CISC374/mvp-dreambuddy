@@ -25,6 +25,9 @@ class Scene1 extends Phaser.Scene {
 
     this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
 
+    // Images for feedback pop-ups
+    this.load.image("close", "assets/images/close-button.png");
+    this.load.image("background", "assets/images/box-back.png");
   }
 
   create() {
