@@ -33,7 +33,7 @@ class Scene2 extends Phaser.Scene {
     this.players = this.physics.add.group();
     this.players.add(this.player1);
     this.physics.world.setBoundsCollision();
-    this.ship = this.add.sprite(config.width / 2 - 70, config.height / 2, "ship");
+    this.ship = this.add.sprite(Math.random() * (1000 - 200), 0, "ship");
     this.enemies = this.physics.add.group();
     this.enemies.add(this.ship);
     this.ship.setInteractive();
@@ -69,7 +69,7 @@ class Scene2 extends Phaser.Scene {
       this.scene.start("mainMenu");
     }
 
-    this.moveShip(this.ship, 2);
+    this.moveShip(this.ship, 5);
 
     this.movePlayerManager();
     
@@ -92,6 +92,10 @@ class Scene2 extends Phaser.Scene {
   }
 
   moveShip(ship, speed) {
+    if (ship.y > config.height) {
+      ship.y = 0;
+      ship.x = Math.random() * (1000 - 200);
+    }
     ship.y += speed;
   }
 
