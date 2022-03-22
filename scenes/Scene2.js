@@ -37,7 +37,7 @@ class Scene2 extends Phaser.Scene {
     this.enemies = this.physics.add.group();
     this.enemies.add(this.ship);
     this.ship.setInteractive();
-    this.physics.add.overlap(this.player1, this.enemies, this.collectGoodItem, null, this);
+    this.physics.add.overlap(this.player1, this.enemies, this.collectItem, null, this);
     this.physics.add.collider(this.enemies, this.players, function(enemy, player) {
       enemy.destroy();
     });
@@ -50,7 +50,18 @@ class Scene2 extends Phaser.Scene {
     //this.players.get("player-left").setInteractive();
     //this.players.get("player-left").setCollideWorldBounds(true);
 
+    this.posFeedbackText = this.add.text(400, 400, "You did it! You collected a good object!", {fontSize: '32px', fill: '#000'});
+    this.posFeedbackText.setOrigin(0.5);
+    this.posFeedbackText.visible = false;
 
+    this.closeButton = this.add.image(400, 600, "close").setDepth(1);
+    this.closeButton.setScale(0.3);
+    this.closeButton.setInteractive();
+    this.closeButton.on("pointerup", () =>{
+      this.posFeedbackText.visible = false;
+      this.closeButton.visible = false;
+    });
+    this.closeButton.visible = false;
   }
 
   update() {
@@ -68,6 +79,16 @@ class Scene2 extends Phaser.Scene {
     console.log("collected good item");
     this.score += 10;
     this.scoreLabel.text = "SCORE " + this.score;
+    
+  }
+
+  collectItem() {
+    //this.physics.pause();
+    
+    this.closeButton.visible = true;
+    // Later: if good call this, else call opposite (2 different feedback messages)
+    this.posFeedbackText.visible = true;
+    this.collectGoodItem();
   }
 
   moveShip(ship, speed) {
