@@ -7,8 +7,11 @@ class Scene2 extends Phaser.Scene {
     this.background = this.add.image(0, 0, "background");
     this.background.setOrigin(0, 0);
 
+    //escape keyboard input
+    this.escKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+
     // placement of player
-    this.player1 = this.add.sprite(config.width / 2 - 70, config.height / 10 * 9, "player-left");
+    this.player1 = this.physics.add.sprite(config.width / 2 - 70, config.height / 10 * 9, "player-left");
 
     this.anims.create({
       key: "player_left_anim",
@@ -41,19 +44,46 @@ class Scene2 extends Phaser.Scene {
 
     this.score = 0;
     this.scoreLabel = this.add.bitmapText(10, 5, "pixelFont", "SCORE ", 75);
+
+    this.cursorKeys = this.input.keyboard.createCursorKeys();
+    
+    //this.players.get("player-left").setInteractive();
+    //this.players.get("player-left").setCollideWorldBounds(true);
+
+
   }
 
   update() {
+    if (Phaser.Input.Keyboard.JustUp(this.escKey)) {
+      this.scene.start("mainMenu");
+    }
+
     this.moveShip(this.ship, 2);
+
+    this.movePlayerManager();
+    
   }
 
   collectGoodItem() {
+    console.log("collected good item");
     this.score += 10;
     this.scoreLabel.text = "SCORE " + this.score;
   }
 
   moveShip(ship, speed) {
     ship.y += speed;
+  }
+
+  movePlayerManager(){
+
+    if(this.cursorKeys.left.isDown)
+      this.players.setVelocityX(-300);
+    else if(this.cursorKeys.right.isDown)
+      this.players.setVelocityX(300);
+    else{
+      this.players.setVelocityX(0);
+    }
+      
   }
 
 }

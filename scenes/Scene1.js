@@ -31,14 +31,10 @@ class Scene1 extends Phaser.Scene {
   }
 
   create() {
-    //escape keyboard input
-    this.escKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+    
   }
 
   update() {
-    if (Phaser.Input.Keyboard.JustUp(this.escKey)) {
-      this.scene.start("mainMenu");
-    }
 
     this.scene.start("playGame");
 
