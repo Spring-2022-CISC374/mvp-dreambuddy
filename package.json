@@ -1,21 +1,21 @@
 {
-  "name": "educational-phaser-game-template",
+  "name": "game-pages-test",
   "version": "0.0.2",
-  "description": "Phaser 3 starter template for educational games, using TypeScript, webpack, and Github Pages.",
-  "homepage": "https://github.com/acbart/educational-phaser-game-template#readme",
+  "description": "This is a test of the directions for github pages games.",
+  "homepage": "https://github.com/ntrungold/game-pages-test#readme",
   "main": "index.js",
   "game": {
-    "url": "github-hosting-directions",
-    "shortName": "EdGame",
-    "name": "Educational Phaser Game"
+    "url": "game-pages-test",
+    "shortName": "TestGame",
+    "name": "Github Pages Test Game"
   },
   "author": {
-    "name": "Austin Cory Bart",
-    "url": "https://github.com/acbart"
+    "name": "Noah Trungold",
+    "url": "https://github.com/ntrungold"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Spring-2021-CISC374/github-hosting-directions.git"
+    "url": "https://github.com/Spring-2021-CISC374/game-pages-test.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
