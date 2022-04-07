@@ -1,4 +1,4 @@
-# github-hosting-directions
+# github-hosting-instructions
 Repo with files and directions for porting Phaser games to GitHub Pages deployment
 
 ## Overview
