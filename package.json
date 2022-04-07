@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Spring-2021-CISC374/game-pages-test.git"
+    "url": "https://github.com/Spring-2022-CISC374/game-pages-test.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
