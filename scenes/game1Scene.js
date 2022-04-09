@@ -14,5 +14,5 @@ class game1Scene extends Phaser.Scene{
         if(Phaser.Input.Keyboard.JustUp(this.escKey)){
             this.scene.start("mainMenu");
         }
-    }    
+    }
 }

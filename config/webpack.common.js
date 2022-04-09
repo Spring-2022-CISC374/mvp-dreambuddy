@@ -39,7 +39,7 @@ module.exports = {
 	{ from: 'assets', to: 'assets' },
 	{ from: 'config/pwa', to: '' },
 	{ from: 'assets/icons/favicon.ico', to: '' },
-	{ from: '*.js', to: ''}	
+	{ from: '*.js', to: 'scenes'}	
     ]),
     new InjectManifest({
       swSrc: path.resolve(__dirname, 'pwa/sw.js')

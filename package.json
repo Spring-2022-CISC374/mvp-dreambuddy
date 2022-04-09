@@ -1,21 +1,21 @@
 {
-  "name": "game-pages-test",
+  "name": "DreamBuddy",
   "version": "0.0.2",
-  "description": "This is a test of the directions for github pages games.",
-  "homepage": "https://github.com/ntrungold/game-pages-test#readme",
+  "description": "DreamBuddy is three mini games promoting healthy sleeping habits.",
+  "homepage": "https://github.com/Spring-2022-CISC374/mvp-dreambuddy#readme",
   "main": "index.js",
   "game": {
-    "url": "game-pages-test",
-    "shortName": "TestGame",
-    "name": "Github Pages Test Game"
+    "url": "mvp-dreambuddy",
+    "shortName": "DreamBuddy",
+    "name": "Github Pages DreamBuddy"
   },
   "author": {
-    "name": "Noah Trungold",
-    "url": "https://github.com/ntrungold"
+    "name": "Lisa Pathania, Emily Taylor, Aidan Chao, Tim Stumper",
+    "url": "https://github.com/lisapat"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Spring-2022-CISC374/game-pages-test.git"
+    "url": "https://github.com/Spring-2022-CISC374/mvp-dreambuddy.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
