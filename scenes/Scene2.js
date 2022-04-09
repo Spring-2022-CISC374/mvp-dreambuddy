@@ -34,9 +34,12 @@ class Scene2 extends Phaser.Scene {
     this.players.add(this.player1);
     this.physics.world.setBoundsCollision();
     this.ship = this.add.sprite(Math.random() * (1000 - 200), 0, "ship");
+    this.bed = this.add.sprite(Math.random() * (1000 - 200), 0, "bed");
     this.enemies = this.physics.add.group();
     this.enemies.add(this.ship);
+    this.enemies.add(this.bed);
     this.ship.setInteractive();
+    this.bed.setInteractive();
     this.physics.add.overlap(this.player1, this.enemies, this.collectItem, null, this);
     this.physics.add.collider(this.enemies, this.players, function(enemy, player) {
       enemy.destroy();
@@ -70,6 +73,7 @@ class Scene2 extends Phaser.Scene {
     }
 
     this.moveShip(this.ship, 5);
+    this.moveBed(this.bed, 5);
 
     this.movePlayerManager();
     
@@ -97,6 +101,14 @@ class Scene2 extends Phaser.Scene {
       ship.x = Math.random() * (1000 - 200);
     }
     ship.y += speed;
+  }
+
+  moveBed(bed, speed) {
+    if (bed.y > config.height) {
+      bed.y = 0;
+      bed.x = Math.random() * (1000 - 200);
+    }
+    bed.y += speed;
   }
 
   movePlayerManager(){

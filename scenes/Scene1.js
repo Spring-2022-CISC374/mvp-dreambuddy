@@ -23,6 +23,12 @@ class Scene1 extends Phaser.Scene {
       frameHeight: 16
     });
 
+    // Load bed
+    this.load.spritesheet("bed", "assets/images/testbed.png", {
+      frameWidth: 55,
+      frameHeight: 33
+    });
+
     this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
 
     // Images for feedback pop-ups
