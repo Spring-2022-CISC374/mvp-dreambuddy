@@ -33,15 +33,28 @@ class Scene2 extends Phaser.Scene {
     this.players = this.physics.add.group();
     this.players.add(this.player1);
     this.physics.world.setBoundsCollision();
-    this.ship = this.add.sprite(Math.random() * (1000 - 200), 0, "ship");
+    
     this.bed = this.add.sprite(Math.random() * (1000 - 200), 0, "bed");
-    this.enemies = this.physics.add.group();
-    this.enemies.add(this.ship);
-    this.enemies.add(this.bed);
-    this.ship.setInteractive();
+    this.book = this.add.sprite(Math.random() * (1000 - 200), 0, "book");
+    this.milk = this.add.sprite(Math.random() * (1000 - 200), 0, "milk");
+    this.pillow = this.add.sprite(Math.random() * (1000 - 200), 0, "pillow");
+    this.toothbrush = this.add.sprite(Math.random() * (1000 - 200), 0, "toothbrush");
+    
+    this.goodItems = this.physics.add.group();
+    this.goodItems.add(this.bed);
+    this.goodItems.add(this.book);
+    this.goodItems.add(this.milk);
+    this.goodItems.add(this.pillow);
+    this.goodItems.add(this.toothbrush);
+    
     this.bed.setInteractive();
-    this.physics.add.overlap(this.player1, this.enemies, this.collectItem, null, this);
-    this.physics.add.collider(this.enemies, this.players, function(enemy, player) {
+    this.book.setInteractive();
+    this.milk.setInteractive();
+    this.pillow.setInteractive();
+    this.toothbrush.setInteractive();
+   
+    this.physics.add.overlap(this.player1, this.goodItems, this.collectItem, null, this);
+    this.physics.add.collider(this.goodItems, this.players, function(enemy, player) {
       enemy.destroy();
     });
 
@@ -72,8 +85,11 @@ class Scene2 extends Phaser.Scene {
       this.scene.start("mainMenu");
     }
 
-    this.moveShip(this.ship, 5);
     this.moveBed(this.bed, 5);
+    this.moveBook(this.book, 5);
+    this.moveMilk(this.milk, 5);
+    this.movePillow(this.pillow, 5);
+    this.moveToothbrush(this.toothbrush, 5);
 
     this.movePlayerManager();
     
@@ -95,20 +111,44 @@ class Scene2 extends Phaser.Scene {
     this.collectGoodItem();
   }
 
-  moveShip(ship, speed) {
-    if (ship.y > config.height) {
-      ship.y = 0;
-      ship.x = Math.random() * (1000 - 200);
-    }
-    ship.y += speed;
-  }
-
   moveBed(bed, speed) {
     if (bed.y > config.height) {
       bed.y = 0;
       bed.x = Math.random() * (1000 - 200);
     }
     bed.y += speed;
+  }
+
+  moveBook(book, speed) {
+    if (book.y > config.height) {
+      book.y = 0;
+      book.x = Math.random() * (1000 - 200);
+    }
+    book.y += speed;
+  }
+
+  moveMilk(milk, speed) {
+    if (milk.y > config.height) {
+      milk.y = 0;
+      milk.x = Math.random() * (1000 - 200);
+    }
+    milk.y += speed;
+  }
+
+  movePillow(pillow, speed) {
+    if (pillow.y > config.height) {
+      pillow.y = 0;
+      pillow.x = Math.random() * (1000 - 200);
+    }
+    pillow.y += speed;
+  }
+
+  moveToothbrush(toothbrush, speed) {
+    if (toothbrush.y > config.height) {
+      toothbrush.y = 0;
+      toothbrush.x = Math.random() * (1000 - 200);
+    }
+    toothbrush.y += speed;
   }
 
   movePlayerManager(){

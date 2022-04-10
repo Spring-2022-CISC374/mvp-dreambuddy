@@ -24,9 +24,33 @@ class Scene1 extends Phaser.Scene {
     });
 
     // Load bed
-    this.load.spritesheet("bed", "assets/images/testbed.png", {
-      frameWidth: 55,
-      frameHeight: 33
+    this.load.spritesheet("bed", "assets/images/good-items/bed.png", {
+      frameWidth: 150,
+      frameHeight: 85
+    });
+
+    // Load book
+    this.load.spritesheet("book", "assets/images/good-items/book.png", {
+      frameWidth: 155,
+      frameHeight: 82
+    });
+
+    // Load milk
+    this.load.spritesheet("milk", "assets/images/good-items/milk.png", {
+      frameWidth: 120,
+      frameHeight: 120
+    });
+
+    // Load pillow
+    this.load.spritesheet("pillow", "assets/images/good-items/pillow.png", {
+      frameWidth: 113,
+      frameHeight: 78
+    });
+
+    // Load toothbrush
+    this.load.spritesheet("toothbrush", "assets/images/good-items/toothbrush.png", {
+      frameWidth: 162,
+      frameHeight: 78
     });
 
     this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
@@ -37,7 +61,7 @@ class Scene1 extends Phaser.Scene {
   }
 
   create() {
-    
+
   }
 
   update() {
