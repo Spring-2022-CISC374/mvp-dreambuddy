@@ -39,6 +39,12 @@ class Scene2 extends Phaser.Scene {
     this.milk = this.add.sprite(Math.random() * (1000 - 200), 0, "milk");
     this.pillow = this.add.sprite(Math.random() * (1000 - 200), 0, "pillow");
     this.toothbrush = this.add.sprite(Math.random() * (1000 - 200), 0, "toothbrush");
+
+    this.donut = this.add.sprite(Math.random() * (1000 - 200), 0, "donut");
+    this.icecream = this.add.sprite(Math.random() * (1000 - 200), 0, "icecream");
+    this.juice = this.add.sprite(Math.random() * (1000 - 200), 0, "juice");
+    this.phone = this.add.sprite(Math.random() * (1000 - 200), 0, "phone");
+    this.tv = this.add.sprite(Math.random() * (1000 - 200), 0, "tv");
     
     this.goodItems = this.physics.add.group();
     this.goodItems.add(this.bed);
@@ -46,15 +52,32 @@ class Scene2 extends Phaser.Scene {
     this.goodItems.add(this.milk);
     this.goodItems.add(this.pillow);
     this.goodItems.add(this.toothbrush);
+
+    this.badItems = this.physics.add.group();
+    this.badItems.add(this.donut);
+    this.badItems.add(this.icecream);
+    this.badItems.add(this.juice);
+    this.badItems.add(this.phone);
+    this.badItems.add(this.tv);
     
     this.bed.setInteractive();
     this.book.setInteractive();
     this.milk.setInteractive();
     this.pillow.setInteractive();
     this.toothbrush.setInteractive();
+
+    this.donut.setInteractive();
+    this.icecream.setInteractive();
+    this.juice.setInteractive();
+    this.phone.setInteractive();
+    this.tv.setInteractive();
    
     this.physics.add.overlap(this.player1, this.goodItems, this.collectItem, null, this);
+    this.physics.add.overlap(this.player1, this.badItems, this.collectBadItem, null, this);
     this.physics.add.collider(this.goodItems, this.players, function(enemy, player) {
+      enemy.destroy();
+    });
+    this.physics.add.collider(this.badItems, this.players, function(enemy, player) {
       enemy.destroy();
     });
 
@@ -91,6 +114,12 @@ class Scene2 extends Phaser.Scene {
     this.movePillow(this.pillow, 5);
     this.moveToothbrush(this.toothbrush, 5);
 
+    this.moveDonut(this.donut, 5);
+    this.moveIcecream(this.icecream, 5);
+    this.moveJuice(this.juice, 5);
+    this.movePhone(this.phone, 5);
+    this.moveTv(this.tv, 5);
+
     this.movePlayerManager();
     
   }
@@ -99,7 +128,11 @@ class Scene2 extends Phaser.Scene {
     console.log("collected good item");
     this.score += 10;
     this.scoreLabel.text = "SCORE " + this.score;
-    
+  }
+
+  collectBadItem() {
+    this.score -= 10;
+    this.scoreLabel.text = "SCORE " + this.score;
   }
 
   collectItem() {
@@ -149,6 +182,46 @@ class Scene2 extends Phaser.Scene {
       toothbrush.x = Math.random() * (1000 - 200);
     }
     toothbrush.y += speed;
+  }
+
+  moveDonut(donut, speed) {
+    if (donut.y > config.height) {
+      donut.y = 0;
+      donut.x = Math.random() * (1000 - 200);
+    }
+    donut.y += speed;
+  }
+
+  moveIcecream(icecream, speed) {
+    if (icecream.y > config.height) {
+      icecream.y = 0;
+      icecream.x = Math.random() * (1000 - 200);
+    }
+    icecream.y += speed;
+  }
+
+  moveJuice(juice, speed) {
+    if (juice.y > config.height) {
+      juice.y = 0;
+      juice.x = Math.random() * (1000 - 200);
+    }
+    juice.y += speed;
+  }
+
+  movePhone(phone, speed) {
+    if (phone.y > config.height) {
+      phone.y = 0;
+      phone.x = Math.random() * (1000 - 200);
+    }
+    phone.y += speed;
+  }
+
+  moveTv(tv, speed) {
+    if (tv.y > config.height) {
+      tv.y = 0;
+      tv.x = Math.random() * (1000 - 200);
+    }
+    tv.y += speed;
   }
 
   movePlayerManager(){

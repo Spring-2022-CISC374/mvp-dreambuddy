@@ -53,6 +53,36 @@ class Scene1 extends Phaser.Scene {
       frameHeight: 78
     });
 
+    // Load donut
+    this.load.spritesheet("donut", "assets/images/bad-items/donut.png", {
+      frameWidth: 122,
+      frameHeight: 116
+    });
+
+    // Load icecream
+    this.load.spritesheet("icecream", "assets/images/bad-items/ice-cream.png", {
+      frameWidth: 90,
+      frameHeight: 120
+    });
+
+    // Load juice
+    this.load.spritesheet("juice", "assets/images/bad-items/juice.png", {
+      frameWidth: 92,
+      frameHeight: 138
+    });
+
+    // Load phone
+    this.load.spritesheet("phone", "assets/images/bad-items/phone.png", {
+      frameWidth: 134,
+      frameHeight: 94
+    });
+
+    // Load tv
+    this.load.spritesheet("tv", "assets/images/bad-items/tv.png", {
+      frameWidth: 113,
+      frameHeight: 113
+    });
+
     this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
 
     // Images for feedback pop-ups
