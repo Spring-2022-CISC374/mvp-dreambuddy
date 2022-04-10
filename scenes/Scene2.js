@@ -108,17 +108,17 @@ class Scene2 extends Phaser.Scene {
       this.scene.start("mainMenu");
     }
 
-    this.moveBed(this.bed, 5);
-    this.moveBook(this.book, 5);
-    this.moveMilk(this.milk, 5);
+    this.moveBed(this.bed, 3.5);
+    this.moveBook(this.book, 4.5);
+    this.moveMilk(this.milk, 3);
     this.movePillow(this.pillow, 5);
     this.moveToothbrush(this.toothbrush, 5);
 
-    this.moveDonut(this.donut, 5);
-    this.moveIcecream(this.icecream, 5);
-    this.moveJuice(this.juice, 5);
+    this.moveDonut(this.donut, 4.2);
+    this.moveIcecream(this.icecream, 3);
+    this.moveJuice(this.juice, 2);
     this.movePhone(this.phone, 5);
-    this.moveTv(this.tv, 5);
+    this.moveTv(this.tv, 1);
 
     this.movePlayerManager();
     
