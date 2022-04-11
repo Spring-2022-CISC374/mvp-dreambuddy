@@ -97,6 +97,8 @@ class Scene2 extends Phaser.Scene {
     this.negFeedbackText.setOrigin(0.5);
     this.negFeedbackText.visible = false;
 
+    this.isPaused = false;
+
     this.closeButton = this.add.image(400, 600, "close").setDepth(1);
     this.closeButton.setScale(0.3);
     this.closeButton.setInteractive();
@@ -105,6 +107,7 @@ class Scene2 extends Phaser.Scene {
       this.negFeedbackText.visible = false;
       this.closeButton.visible = false;
       this.physics.resume();
+      this.isPaused = false;
     });
     this.closeButton.visible = false;
   }
@@ -113,19 +116,19 @@ class Scene2 extends Phaser.Scene {
     if (Phaser.Input.Keyboard.JustUp(this.escKey)) {
       this.scene.start("mainMenu");
     }
+    if (!this.isPaused) {
+      this.moveObject(this.bed, 3.5);
+      this.moveObject(this.book, 4.5);
+      this.moveObject(this.milk, 3);
+      this.moveObject(this.pillow, 5);
+      this.moveObject(this.toothbrush, 5);
 
-    this.moveObject(this.bed, 3.5);
-    this.moveObject(this.book, 4.5);
-    this.moveObject(this.milk, 3);
-    this.moveObject(this.pillow, 5);
-    this.moveObject(this.toothbrush, 5);
-
-    this.moveObject(this.donut, 4.2);
-    this.moveObject(this.icecream, 3);
-    this.moveObject(this.juice, 2);
-    this.moveObject(this.phone, 5);
-    this.moveObject(this.tv, 1);
-
+      this.moveObject(this.donut, 4.2);
+      this.moveObject(this.icecream, 3);
+      this.moveObject(this.juice, 2);
+      this.moveObject(this.phone, 5);
+      this.moveObject(this.tv, 1);
+    }
     this.movePlayerManager();
     
   }
@@ -134,6 +137,7 @@ class Scene2 extends Phaser.Scene {
     console.log("collected good item");
     
     this.physics.pause();
+    this.isPaused = true;
     this.closeButton.visible = true;
     this.posFeedbackText.visible = true;
 
@@ -145,6 +149,7 @@ class Scene2 extends Phaser.Scene {
     console.log("collected bad item");
 
     this.physics.pause();
+    this.isPaused = true;
     this.closeButton.visible = true;
     this.negFeedbackText.visible = true; 
 
