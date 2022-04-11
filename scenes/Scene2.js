@@ -27,7 +27,7 @@ class Scene2 extends Phaser.Scene {
       repeat: -1
     });
 
-    this.player1.play("player_left_anim");
+    //this.player1.play("player_left_anim");
     // this.player1.play("player_right_anim");
 
     this.players = this.physics.add.group();
@@ -226,14 +226,28 @@ class Scene2 extends Phaser.Scene {
 
   movePlayerManager(){
 
-    if(this.cursorKeys.left.isDown)
+    //movement handling
+    if(this.cursorKeys.left.isDown && !(this.player1.x <= 40))
       this.players.setVelocityX(-300);
-    else if(this.cursorKeys.right.isDown)
+    else if(this.cursorKeys.right.isDown && !(this.player1.x >= config.width - 30))
       this.players.setVelocityX(300);
     else{
       this.players.setVelocityX(0);
     }
-      
+
+    //animation handling
+    //i seriously couldnt figure out a more efficient way...
+    if(Phaser.Input.Keyboard.JustDown(this.cursorKeys.left)){
+      this.player1.play("player_left_anim");
+    }else if(Phaser.Input.Keyboard.JustDown(this.cursorKeys.right)){
+      this.player1.play("player_right_anim");
+    }else if(this.cursorKeys.left.isUp && this.cursorKeys.right.isUp){
+      this.player1.stop();
+      if(Phaser.Input.Keyboard.JustUp(this.cursorKeys.left))
+        this.player1.setFrame(0);
+      else if(Phaser.Input.Keyboard.JustUp(this.cursorKeys.right))
+        this.player1.setFrame(1);
+    }
   }
 
 }
