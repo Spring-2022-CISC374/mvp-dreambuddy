@@ -114,17 +114,17 @@ class Scene2 extends Phaser.Scene {
       this.scene.start("mainMenu");
     }
 
-    this.moveBed(this.bed, 3.5);
-    this.moveBook(this.book, 4.5);
-    this.moveMilk(this.milk, 3);
-    this.movePillow(this.pillow, 5);
-    this.moveToothbrush(this.toothbrush, 5);
+    this.moveObject(this.bed, 3.5);
+    this.moveObject(this.book, 4.5);
+    this.moveObject(this.milk, 3);
+    this.moveObject(this.pillow, 5);
+    this.moveObject(this.toothbrush, 5);
 
-    this.moveDonut(this.donut, 4.2);
-    this.moveIcecream(this.icecream, 3);
-    this.moveJuice(this.juice, 2);
-    this.movePhone(this.phone, 5);
-    this.moveTv(this.tv, 1);
+    this.moveObject(this.donut, 4.2);
+    this.moveObject(this.icecream, 3);
+    this.moveObject(this.juice, 2);
+    this.moveObject(this.phone, 5);
+    this.moveObject(this.tv, 1);
 
     this.movePlayerManager();
     
@@ -152,85 +152,85 @@ class Scene2 extends Phaser.Scene {
     this.scoreLabel.text = "SCORE " + this.score;
   }
 
-  moveBed(bed, speed) {
-    if (bed.y > config.height) {
-      bed.y = 0;
-      bed.x = Math.random() * (1000 - 200);
+  moveObject(object, speed) {
+    if (object.y > config.height) {
+      object.y = 0;
+      object.x = Math.random() * (1000 - 200);
     }
-    bed.y += speed;
+    object.y += speed;
   }
 
-  moveBook(book, speed) {
-    if (book.y > config.height) {
-      book.y = 0;
-      book.x = Math.random() * (1000 - 200);
-    }
-    book.y += speed;
-  }
+  // moveBook(book, speed) {
+  //   if (book.y > config.height) {
+  //     book.y = 0;
+  //     book.x = Math.random() * (1000 - 200);
+  //   }
+  //   book.y += speed;
+  // }
 
-  moveMilk(milk, speed) {
-    if (milk.y > config.height) {
-      milk.y = 0;
-      milk.x = Math.random() * (1000 - 200);
-    }
-    milk.y += speed;
-  }
+  // moveMilk(milk, speed) {
+  //   if (milk.y > config.height) {
+  //     milk.y = 0;
+  //     milk.x = Math.random() * (1000 - 200);
+  //   }
+  //   milk.y += speed;
+  // }
 
-  movePillow(pillow, speed) {
-    if (pillow.y > config.height) {
-      pillow.y = 0;
-      pillow.x = Math.random() * (1000 - 200);
-    }
-    pillow.y += speed;
-  }
+  // movePillow(pillow, speed) {
+  //   if (pillow.y > config.height) {
+  //     pillow.y = 0;
+  //     pillow.x = Math.random() * (1000 - 200);
+  //   }
+  //   pillow.y += speed;
+  // }
 
-  moveToothbrush(toothbrush, speed) {
-    if (toothbrush.y > config.height) {
-      toothbrush.y = 0;
-      toothbrush.x = Math.random() * (1000 - 200);
-    }
-    toothbrush.y += speed;
-  }
+  // moveToothbrush(toothbrush, speed) {
+  //   if (toothbrush.y > config.height) {
+  //     toothbrush.y = 0;
+  //     toothbrush.x = Math.random() * (1000 - 200);
+  //   }
+  //   toothbrush.y += speed;
+  // }
 
-  moveDonut(donut, speed) {
-    if (donut.y > config.height) {
-      donut.y = 0;
-      donut.x = Math.random() * (1000 - 200);
-    }
-    donut.y += speed;
-  }
+  // moveDonut(donut, speed) {
+  //   if (donut.y > config.height) {
+  //     donut.y = 0;
+  //     donut.x = Math.random() * (1000 - 200);
+  //   }
+  //   donut.y += speed;
+  // }
 
-  moveIcecream(icecream, speed) {
-    if (icecream.y > config.height) {
-      icecream.y = 0;
-      icecream.x = Math.random() * (1000 - 200);
-    }
-    icecream.y += speed;
-  }
+  // moveIcecream(icecream, speed) {
+  //   if (icecream.y > config.height) {
+  //     icecream.y = 0;
+  //     icecream.x = Math.random() * (1000 - 200);
+  //   }
+  //   icecream.y += speed;
+  // }
 
-  moveJuice(juice, speed) {
-    if (juice.y > config.height) {
-      juice.y = 0;
-      juice.x = Math.random() * (1000 - 200);
-    }
-    juice.y += speed;
-  }
+  // moveJuice(juice, speed) {
+  //   if (juice.y > config.height) {
+  //     juice.y = 0;
+  //     juice.x = Math.random() * (1000 - 200);
+  //   }
+  //   juice.y += speed;
+  // }
 
-  movePhone(phone, speed) {
-    if (phone.y > config.height) {
-      phone.y = 0;
-      phone.x = Math.random() * (1000 - 200);
-    }
-    phone.y += speed;
-  }
+  // movePhone(phone, speed) {
+  //   if (phone.y > config.height) {
+  //     phone.y = 0;
+  //     phone.x = Math.random() * (1000 - 200);
+  //   }
+  //   phone.y += speed;
+  // }
 
-  moveTv(tv, speed) {
-    if (tv.y > config.height) {
-      tv.y = 0;
-      tv.x = Math.random() * (1000 - 200);
-    }
-    tv.y += speed;
-  }
+  // moveTv(tv, speed) {
+  //   if (tv.y > config.height) {
+  //     tv.y = 0;
+  //     tv.x = Math.random() * (1000 - 200);
+  //   }
+  //   tv.y += speed;
+  // }
 
   movePlayerManager(){
 
