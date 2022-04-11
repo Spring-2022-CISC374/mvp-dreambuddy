@@ -72,7 +72,7 @@ class Scene2 extends Phaser.Scene {
     this.phone.setInteractive();
     this.tv.setInteractive();
    
-    this.physics.add.overlap(this.player1, this.goodItems, this.collectItem, null, this);
+    this.physics.add.overlap(this.player1, this.goodItems, this.collectGoodItem, null, this);
     this.physics.add.overlap(this.player1, this.badItems, this.collectBadItem, null, this);
     this.physics.add.collider(this.goodItems, this.players, function(enemy, player) {
       enemy.destroy();
@@ -93,12 +93,18 @@ class Scene2 extends Phaser.Scene {
     this.posFeedbackText.setOrigin(0.5);
     this.posFeedbackText.visible = false;
 
+    this.negFeedbackText = this.add.text(400, 400, "Oh no! You collected a bad object!", {fontSize: '32px', fill: '#000'});
+    this.negFeedbackText.setOrigin(0.5);
+    this.negFeedbackText.visible = false;
+
     this.closeButton = this.add.image(400, 600, "close").setDepth(1);
     this.closeButton.setScale(0.3);
     this.closeButton.setInteractive();
     this.closeButton.on("pointerup", () =>{
       this.posFeedbackText.visible = false;
+      this.negFeedbackText.visible = false;
       this.closeButton.visible = false;
+      this.physics.resume();
     });
     this.closeButton.visible = false;
   }
@@ -126,22 +132,24 @@ class Scene2 extends Phaser.Scene {
 
   collectGoodItem() {
     console.log("collected good item");
+    
+    this.physics.pause();
+    this.closeButton.visible = true;
+    this.posFeedbackText.visible = true;
+
     this.score += 10;
     this.scoreLabel.text = "SCORE " + this.score;
   }
 
   collectBadItem() {
+    console.log("collected bad item");
+
+    this.physics.pause();
+    this.closeButton.visible = true;
+    this.negFeedbackText.visible = true; 
+
     this.score -= 10;
     this.scoreLabel.text = "SCORE " + this.score;
-  }
-
-  collectItem() {
-    //this.physics.pause();
-    
-    this.closeButton.visible = true;
-    // Later: if good call this, else call opposite (2 different feedback messages)
-    this.posFeedbackText.visible = true;
-    this.collectGoodItem();
   }
 
   moveBed(bed, speed) {
