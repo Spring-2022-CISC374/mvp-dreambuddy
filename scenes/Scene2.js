@@ -161,6 +161,9 @@ class Scene2 extends Phaser.Scene {
 
     this.lives -= 1;
     this.livesLabel.text = "LIVES " + this.lives;
+
+    if(this.lives == 0)
+      this.scene.start("gameOver");
   }
 
   moveObject(object, speed) {
