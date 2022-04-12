@@ -46,6 +46,7 @@ class Scene2 extends Phaser.Scene {
     this.phone = this.add.sprite(Math.random() * (1000 - 200), 0, "phone");
     this.tv = this.add.sprite(Math.random() * (1000 - 200), 0, "tv");
     
+    this.numGoodObjCaught = 0;
     this.goodItems = this.physics.add.group();
     this.goodItems.add(this.bed);
     this.goodItems.add(this.book);
@@ -146,6 +147,9 @@ class Scene2 extends Phaser.Scene {
 
     this.score += 10;
     this.scoreLabel.text = "SCORE " + this.score;
+    this.numGoodObjCaught++;
+    if(this.numGoodObjCaught == 5)
+      this.scene.start("winScreen");
   }
 
   collectBadItem() {
@@ -164,7 +168,7 @@ class Scene2 extends Phaser.Scene {
 
     if(this.lives == 0)
       this.scene.start("gameOver");
-  }
+    }
 
   moveObject(object, speed) {
     if (object.y > config.height) {
