@@ -91,12 +91,21 @@ class Scene1 extends Phaser.Scene {
   }
 
   create() {
+    //background image
+    this.background = this.add.image(0, 0, "menu_bg");
+    this.background.setOrigin(0, 0);
 
-  }
+    this.add.text(this.game.renderer.width / 4, this.game.renderer.height * 0.25, "Welcome to Game 1 of 3", {fontSize: '32px'});
+    this.add.text(this.game.renderer.width / 9, this.game.renderer.height * 0.50, "Use the left and right arrow keys to move.\nCollect the objects that are beneficial to\na healthy sleeping routine.\nAvoid the harmful ones!", 
+    {fontSize: '25px', fill: '#FFF', align: 'center'});
 
-  update() {
+    let playButton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height * 0.75, "play_button").setDepth(1);
 
-    this.scene.start("playGame");
+    playButton.setInteractive();
+
+    playButton.on("pointerup", () =>{
+      this.scene.start("playGame");
+    });
 
   }
 }
