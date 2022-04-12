@@ -84,6 +84,9 @@ class Scene2 extends Phaser.Scene {
     this.score = 0;
     this.scoreLabel = this.add.bitmapText(10, 5, "pixelFont", "SCORE ", 75);
 
+    this.lives = 3;
+    this.livesLabel = this.add.bitmapText(550, 5, "pixelFont", "LIVES: 3", 75);
+
     this.cursorKeys = this.input.keyboard.createCursorKeys();
     
     //this.players.get("player-left").setInteractive();
@@ -155,6 +158,9 @@ class Scene2 extends Phaser.Scene {
 
     this.score -= 10;
     this.scoreLabel.text = "SCORE " + this.score;
+
+    this.lives -= 1;
+    this.livesLabel.text = "LIVES " + this.lives;
   }
 
   moveObject(object, speed) {
