@@ -34,17 +34,17 @@ class Scene2 extends Phaser.Scene {
     this.players.add(this.player1);
     this.physics.world.setBoundsCollision();
     
-    this.bed = this.add.sprite(Math.random() * (1000 - 200), 0, "bed");
-    this.book = this.add.sprite(Math.random() * (1000 - 200), 0, "book");
-    this.milk = this.add.sprite(Math.random() * (1000 - 200), 0, "milk");
-    this.pillow = this.add.sprite(Math.random() * (1000 - 200), 0, "pillow");
-    this.toothbrush = this.add.sprite(Math.random() * (1000 - 200), 0, "toothbrush");
+    this.bed = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "bed");
+    this.book = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "book");
+    this.milk = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "milk");
+    this.pillow = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "pillow");
+    this.toothbrush = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "toothbrush");
 
-    this.donut = this.add.sprite(Math.random() * (1000 - 200), 0, "donut");
-    this.icecream = this.add.sprite(Math.random() * (1000 - 200), 0, "icecream");
-    this.juice = this.add.sprite(Math.random() * (1000 - 200), 0, "juice");
-    this.phone = this.add.sprite(Math.random() * (1000 - 200), 0, "phone");
-    this.tv = this.add.sprite(Math.random() * (1000 - 200), 0, "tv");
+    this.donut = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "donut");
+    this.icecream = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "icecream");
+    this.juice = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "juice");
+    this.phone = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "phone");
+    this.tv = this.add.sprite(Math.random() * (1000 - 200), Math.random() * (-800), "tv");
     
     this.numGoodObjCaught = 0;
     this.goodItems = this.physics.add.group();
