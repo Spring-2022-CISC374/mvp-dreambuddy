@@ -36,6 +36,7 @@ class game2Scene extends Phaser.Scene{
     }
 
     create(){
+        // Create a array of the images on the front of the card
         let cardFronts = [];
         cardFronts.push('kingCKey');
         cardFronts.push('kingDKey');
@@ -57,12 +58,14 @@ class game2Scene extends Phaser.Scene{
         
 
 		this.boardArray = [];
+        // Create a temporary array to duplicate the cardFronts array
         let tempDeck = [];
         Phaser.Utils.Array.AddAt(tempDeck, cardFronts, 0);
         for (let row = 0; row < 4; row++) {
 			this.boardArray[row] = [];
 			for (let col = 0; col < 4; col++) {
 				x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2);
+                // Load the image of a randomly chosen card ad remove chosen card from temp
                 let randomSprite = Phaser.Utils.Array.GetRandom(tempDeck);
                 let cardFront = this.add.image(x, y, randomSprite);
                 Phaser.Utils.Array.Remove(tempDeck, randomSprite);
@@ -70,7 +73,7 @@ class game2Scene extends Phaser.Scene{
 				cardFront.alpha = 1;
 				cardFront.depth = 20;
 
-
+                // Hide front of card with back of card
 				let cardBack = this.add.image(x, y, 'cardBack');
                 cardBack.setInteractive();
                 cardBack.on("pointerup", () =>{
