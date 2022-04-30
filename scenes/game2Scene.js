@@ -3,6 +3,7 @@ let maxImageHeight = 320/2;
 let offsetX = 10;
 let x = 100;
 let y = 175;
+let numOfPairs = 8;
 
 class game2Scene extends Phaser.Scene{
     constructor(){
@@ -35,15 +36,46 @@ class game2Scene extends Phaser.Scene{
     }
 
     create(){
-        //this.cardFronts = this.physics.add.group();
+        let cardFronts = [];
+        cardFronts.push('kingCKey');
+        cardFronts.push('kingDKey');
+        cardFronts.push('kingHKey');
+        cardFronts.push('kingSKey');
+        cardFronts.push('queenCKey');
+        cardFronts.push('queenDKey');
+        cardFronts.push('queenHKey');
+        cardFronts.push('queenSKey');
+
+        cardFronts.push('kingCDef');
+        cardFronts.push('kingDDef');
+        cardFronts.push('kingHDef');
+        cardFronts.push('kingSDef');
+        cardFronts.push('queenCDef');
+        cardFronts.push('queenDDef');
+        cardFronts.push('queenHDef');
+        cardFronts.push('queenSDef');
+        
 
 		this.boardArray = [];
+        let tempDeck = [];
+        Phaser.Utils.Array.AddAt(tempDeck, cardFronts, 0);
         for (let row = 0; row < 4; row++) {
 			this.boardArray[row] = [];
-			for (let col = 0; col < 5; col++) {
+			for (let col = 0; col < 4; col++) {
 				x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2);
+                let randomSprite = Phaser.Utils.Array.GetRandom(tempDeck);
+                let cardFront = this.add.image(x, y, randomSprite);
+                Phaser.Utils.Array.Remove(tempDeck, randomSprite);
+                cardFront.setScale(0.45);
+				cardFront.alpha = 1;
+				cardFront.depth = 20;
+
 
 				let cardBack = this.add.image(x, y, 'cardBack');
+                cardBack.setInteractive();
+                cardBack.on("pointerup", () =>{
+                    cardBack.visible = false;
+                });
 				cardBack.setScale(0.5);
 				cardBack.alpha = 1;
 				cardBack.depth = 20;
