@@ -9,7 +9,7 @@ class Scene2 extends Phaser.Scene {
 
     //escape keyboard input
     this.escKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-
+    
     // placement of player
     this.player1 = this.physics.add.sprite(config.width / 2 - 70, config.height / 10 * 9, "player-left");
 

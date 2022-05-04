@@ -36,6 +36,9 @@ class game2Scene extends Phaser.Scene {
     }
 
     create() {
+        //escape keyboard input
+        this.escKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+
         let count = 0;
         let selectedPair = [];
         const map = new Map();
@@ -115,6 +118,8 @@ class game2Scene extends Phaser.Scene {
     }
 
     update() {
-
+        if (Phaser.Input.Keyboard.JustUp(this.escKey)) {
+            this.scene.start("mainMenu");
+        }
     }
 }
