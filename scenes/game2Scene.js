@@ -40,6 +40,7 @@ class game2Scene extends Phaser.Scene {
 
         let cardSet = new Map();
         let count = 0;
+        let numOfPairs = 0;
         let selectedPair = [];
         
         // Create a array of the images on the front of the card
@@ -107,15 +108,20 @@ class game2Scene extends Phaser.Scene {
 //                            //console.log("not a match");
                             this.input.mouse.enabled = false;
                             this.time.addEvent({
-                                delay: 2600,
+                                delay: 2550,
                                 callback: () => {
                                     selectedPair[2].visible = true;
                                     selectedPair[3].visible = true;
                                     this.input.mouse.enabled = true;
                                 },
                             })                            
+                        } else {
+                            numOfPairs++;
                         }
                         count = 0;
+                        if (numOfPairs==8) {
+                            //Win condition
+                        }
                     }                    
                 });
                 cardBack.setScale(0.5);
