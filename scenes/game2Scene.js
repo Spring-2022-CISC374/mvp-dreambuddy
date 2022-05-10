@@ -108,7 +108,7 @@ class game2Scene extends Phaser.Scene {
 //                            //console.log("not a match");
                             this.input.mouse.enabled = false;
                             this.time.addEvent({
-                                delay: 2550,
+                                delay: 2000,
                                 callback: () => {
                                     selectedPair[2].visible = true;
                                     selectedPair[3].visible = true;
