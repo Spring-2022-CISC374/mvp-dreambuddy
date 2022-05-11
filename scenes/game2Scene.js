@@ -12,6 +12,8 @@ class game2Scene extends Phaser.Scene {
     preload() {
         this.load.image('cardBack', 'assets/images/cardBack.png');
 
+        this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
+
         // Load key cards
         this.load.image("kingCKey1", "assets/images/card-images/cards-key-img/king-cloves-key.png");
         this.load.image("kingDKey2", "assets/images/card-images/cards-key-img/king-diamonds-key.png");
@@ -63,6 +65,12 @@ class game2Scene extends Phaser.Scene {
         cardFronts.push('queenHDef7');
         cardFronts.push('queenSDef8');
 
+        this.matchesLeft = 8;
+        this.matchesLeftLabel = this.add.bitmapText(10, 5, "pixelFont", "MATCHES LEFT: 8", 50);
+
+        this.matchesFound = 0;
+        this.matchesFoundLabel = this.add.bitmapText(475, 5, "pixelFont", "MATCHES FOUND: 0", 50);
+
 
         let posString = '';
         this.boardArray = [];
@@ -72,7 +80,7 @@ class game2Scene extends Phaser.Scene {
         for (let row = 0; row < 4; row++) {
             this.boardArray[row] = [];
             for (let col = 0; col < 4; col++) {
-                x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2);
+                x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2) + 120;
                 // Load the image of a randomly chosen card ad remove chosen card from temp
                 let randomSprite = Phaser.Utils.Array.GetRandom(tempDeck);
                 let cardFront = this.add.image(x, y, randomSprite);
@@ -117,10 +125,14 @@ class game2Scene extends Phaser.Scene {
                             })                            
                         } else {
                             numOfPairs++;
+                            this.matchesFound++;
+                            this.matchesLeft--;
+                            this.matchesFoundLabel.text = "MATCHES FOUND: " + this.matchesFound;
+                            this.matchesLeftLabel.text = "MATCHES LEFT: " + this.matchesLeft;
                         }
                         count = 0;
                         if (numOfPairs==8) {
-                            //Win condition
+                            
                         }
                     }                    
                 });
