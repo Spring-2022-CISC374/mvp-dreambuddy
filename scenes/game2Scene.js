@@ -120,7 +120,7 @@ class game2Scene extends Phaser.Scene {
                         }
                         count = 0;
                         if (numOfPairs==8) {
-                            //Win condition
+                            this.scene.start("finalWinScreen");
                         }
                     }                    
                 });

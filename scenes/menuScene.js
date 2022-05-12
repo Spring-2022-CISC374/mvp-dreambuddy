@@ -19,7 +19,7 @@ class menuScene extends Phaser.Scene{
 
     update(){
         if(Phaser.Input.Keyboard.JustUp(this.escKey)){
-            this.scene.start("winScreen");
+            this.scene.start("finalWinScreen");
         }
     }  
 }
