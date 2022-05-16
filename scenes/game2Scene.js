@@ -40,6 +40,7 @@ class game2Scene extends Phaser.Scene {
         //escape keyboard input
         this.escKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
+        // Used to figure out the matching pairs
         let cardSet = new Map();
         let count = 0;
         let numOfPairs = 0;
@@ -78,7 +79,7 @@ class game2Scene extends Phaser.Scene {
         let tempDeck = [];
         Phaser.Utils.Array.AddAt(tempDeck, cardFronts, 0);
         for (let row = 0; row < 4; row++) {
-            this.boardArray[row] = [];
+            this.rowArray = [];
             for (let col = 0; col < 4; col++) {
                 x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2) + 120;
                 // Load the image of a randomly chosen card ad remove chosen card from temp
@@ -141,11 +142,26 @@ class game2Scene extends Phaser.Scene {
                 cardBack.setScale(0.5);
                 cardBack.alpha = 1;
                 cardBack.depth = 20;
+                this.rowArray[col] = cardBack;
+//                console.log(this.rowArray[col]);
             }
+            this.boardArray[row] = this.rowArray;
             y += maxImageHeight;
         }
 
-
+        // Display the cards at the start of the game
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                let tempCard = this.boardArray[i][j];
+                tempCard.visible = false;
+                this.time.addEvent({
+                    delay: 2000,
+                    callback: () => {
+                        tempCard.visible = true;
+                    },
+                })
+            }
+        }
 
     }
 
