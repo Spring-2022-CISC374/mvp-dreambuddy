@@ -3,7 +3,6 @@ let maxImageHeight = 320 / 2;
 let offsetX = 10;
 let x = 100;
 let y = 175;
-let numOfPairs = 8;
 
 class game2Scene extends Phaser.Scene {
     constructor() {
@@ -12,6 +11,8 @@ class game2Scene extends Phaser.Scene {
 
     preload() {
         this.load.image('cardBack', 'assets/images/cardBack.png');
+
+        this.load.bitmapFont("pixelFont", "assets/font/font.png", "assets/font/font.xml");
 
         // Load key cards
         this.load.image("kingCKey1", "assets/images/card-images/cards-key-img/king-cloves-key.png");
@@ -39,10 +40,11 @@ class game2Scene extends Phaser.Scene {
         //escape keyboard input
         this.escKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
+        let cardSet = new Map();
         let count = 0;
+        let numOfPairs = 0;
         let selectedPair = [];
-        const map = new Map();
-        const cardBackMap = new Map();
+        
         // Create a array of the images on the front of the card
         let cardFronts = [];
         cardFronts.push('kingCKey1');
@@ -63,8 +65,14 @@ class game2Scene extends Phaser.Scene {
         cardFronts.push('queenHDef7');
         cardFronts.push('queenSDef8');
 
+        this.matchesLeft = 8;
+        this.matchesLeftLabel = this.add.bitmapText(10, 5, "pixelFont", "MATCHES LEFT: 8", 50);
 
-        let orderOfCards = [];
+        this.matchesFound = 0;
+        this.matchesFoundLabel = this.add.bitmapText(475, 5, "pixelFont", "MATCHES FOUND: 0", 50);
+
+
+        let posString = '';
         this.boardArray = [];
         // Create a temporary array to duplicate the cardFronts array
         let tempDeck = [];
@@ -72,12 +80,13 @@ class game2Scene extends Phaser.Scene {
         for (let row = 0; row < 4; row++) {
             this.boardArray[row] = [];
             for (let col = 0; col < 4; col++) {
-                x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2);
+                x = offsetX + (maxImageWidth * col) + (maxImageWidth / 2) + 120;
                 // Load the image of a randomly chosen card ad remove chosen card from temp
                 let randomSprite = Phaser.Utils.Array.GetRandom(tempDeck);
                 let cardFront = this.add.image(x, y, randomSprite);
-                map.set(x + y, randomSprite);
-                orderOfCards.push(randomSprite);
+                posString = x + ", " + y;
+                cardSet.set(posString, randomSprite.toString());
+                posString = '';
                 Phaser.Utils.Array.Remove(tempDeck, randomSprite);
                 cardFront.setScale(0.45);
                 cardFront.alpha = 1;
@@ -85,26 +94,49 @@ class game2Scene extends Phaser.Scene {
 
                 // Hide front of card with back of card
                 let cardBack = this.add.image(x, y, 'cardBack');
-                cardBackMap.set(x + y, cardBack);
+                // Logic for matching
                 cardBack.setInteractive();
                 cardBack.on("pointerup", () => {
                     cardBack.visible = false;
-                    selectedPair[count] = cardBack.x + cardBack.y;
+                    posString = cardBack.x + ", " + cardBack.y;
+                    //Save front and back of card
+                    selectedPair[count] = cardSet.get(posString);
+                    selectedPair[count+2] = cardBack;
                     count++;
+                    posString = '';
+
                     if (count == 2) {
-                        const card1 = map.get(selectedPair[0]);
-                        const card2 = map.get(selectedPair[1]);
+                        const card1 = selectedPair[0];
+//                        console.log(card1);
+                        const card2 = selectedPair[1];
+//                        console.log(card2);
+//                        console.log(card1.substring(card1.length - 1));
+//                        console.log(card2.substring(card2.length - 1));
                         if (card1.substring(card1.length - 1) != card2.substring(card2.length - 1)) {
+//                            //console.log("not a match");
+                            this.input.mouse.enabled = false;
                             this.time.addEvent({
-                                delay: 3500,
+                                delay: 2000,
                                 callback: () => {
-                                    cardBackMap.get(selectedPair[0]).visible = true;
-                                    cardBackMap.get(selectedPair[1]).visible = true;
+                                    selectedPair[2].visible = true;
+                                    selectedPair[3].visible = true;
+                                    this.input.mouse.enabled = true;
                                 },
-                            })
+                            })                            
+                        } else {
+                            numOfPairs++;
+                            this.matchesFound++;
+                            this.matchesLeft--;
+                            this.matchesFoundLabel.text = "MATCHES FOUND: " + this.matchesFound;
+                            this.matchesLeftLabel.text = "MATCHES LEFT: " + this.matchesLeft;
                         }
                         count = 0;
-                    }
+                        if (numOfPairs==8) {
+                            this.scene.start("finalWinScreen");
+                            
+
+                        }
+                    }                    
                 });
                 cardBack.setScale(0.5);
                 cardBack.alpha = 1;

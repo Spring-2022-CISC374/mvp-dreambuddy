@@ -3,7 +3,7 @@ var config = {
     height: 800,
     backgroundColor: 0x000000,
     color: 0xFFFFFF,
-    scene: [loadGame, mainMenu, menuScene, Scene1, Scene2, gameOver1, winScreen1, game2Scene, game2instructions],
+    scene: [loadGame, mainMenu, menuScene, Scene1, Scene2, gameOver1, winScreen1, game2Scene, game2instructions, winScreen2],
 
     physics: {
         default: "arcade",
