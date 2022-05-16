@@ -121,16 +121,16 @@ class Scene2 extends Phaser.Scene {
       this.scene.start("mainMenu");
     }
     if (!this.isPaused) {
-      this.moveObject(this.bed, 3.5);
-      this.moveObject(this.book, 4.5);
+      this.moveObject(this.bed, 2);
+      this.moveObject(this.book, 2.5);
       this.moveObject(this.milk, 3);
-      this.moveObject(this.pillow, 5);
-      this.moveObject(this.toothbrush, 5);
+      this.moveObject(this.pillow, 3.5);
+      this.moveObject(this.toothbrush, 4);
 
-      this.moveObject(this.donut, 4.2);
+      this.moveObject(this.donut, 3.5);
       this.moveObject(this.icecream, 3);
       this.moveObject(this.juice, 2);
-      this.moveObject(this.phone, 5);
+      this.moveObject(this.phone, 2.5);
       this.moveObject(this.tv, 1);
     }
     this.movePlayerManager();
@@ -140,14 +140,20 @@ class Scene2 extends Phaser.Scene {
   collectGoodItem() {
     console.log("collected good item");
     
-    this.physics.pause();
-    this.isPaused = true;
-    this.closeButton.visible = true;
+    //this.physics.pause();
+    //this.isPaused = true;
+    //this.closeButton.visible = true;
     this.posFeedbackText.visible = true;
-
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => {
+          this.posFeedbackText.visible = false;
+      },
+    })
     this.score += 10;
     this.scoreLabel.text = "SCORE " + this.score;
     this.numGoodObjCaught++;
+    
     if(this.numGoodObjCaught == 5)
       this.scene.start("winScreen");
   }
@@ -155,11 +161,16 @@ class Scene2 extends Phaser.Scene {
   collectBadItem() {
     console.log("collected bad item");
 
-    this.physics.pause();
-    this.isPaused = true;
-    this.closeButton.visible = true;
+    //this.physics.pause();
+    //this.isPaused = true;
+    //this.closeButton.visible = true;
     this.negFeedbackText.visible = true; 
-
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => {
+          this.negFeedbackText.visible = false;
+      },
+    })
     this.score -= 10;
     this.scoreLabel.text = "SCORE " + this.score;
 
